@@ -1,0 +1,31 @@
+CREATE DATABASE HastaneDB;
+GO
+USE HastaneDB;
+GO
+CREATE TABLE Hastalar (
+    HastaId INT PRIMARY KEY IDENTITY(1,1),
+    Ad NVARCHAR(50) NOT NULL,
+    Soyad NVARCHAR(50) NOT NULL,
+    TCKimlikNo NVARCHAR(11) NOT NULL UNIQUE,
+    Telefon NVARCHAR(15),
+    Adres NVARCHAR(200)
+);
+GO
+CREATE TABLE Doktorlar (
+    DoktorId INT PRIMARY KEY IDENTITY(1,1),
+    Ad NVARCHAR(50) NOT NULL,
+    Soyad NVARCHAR(50) NOT NULL,
+    Brans NVARCHAR(50) NOT NULL,
+    Telefon NVARCHAR(15)
+);
+GO
+CREATE TABLE Randevular (
+    RandevuId INT PRIMARY KEY IDENTITY(1,1),
+    HastaId INT NOT NULL,
+    DoktorId INT NOT NULL,
+    Tarih DATE NOT NULL,
+    Saat TIME NOT NULL,
+    FOREIGN KEY (HastaId) REFERENCES Hastalar(HastaId),
+    FOREIGN KEY (DoktorId) REFERENCES Doktorlar(DoktorId)
+);
+GO

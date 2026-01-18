@@ -1,0 +1,10 @@
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\bin\Debug\cok_katmanli_mimari_db.exe.config
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\bin\Debug\cok_katmanli_mimari_db.exe
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\bin\Debug\cok_katmanli_mimari_db.pdb
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\obj\Debug\cok_katmanli_mimari_db.csproj.AssemblyReference.cache
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\obj\Debug\cok_katmanli_mimari_db.Properties.Resources.resources
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\obj\Debug\cok_katmanli_mimari_db.csproj.GenerateResource.cache
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\obj\Debug\cok_katmanli_mimari_db.csproj.CoreCompileInputs.cache
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\obj\Debug\cok_katmanli_mimari_db.exe
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\obj\Debug\cok_katmanli_mimari_db.pdb
+C:\Users\Gokalp\source\repos\cok_katmanli_mimari_db\cok_katmanli_mimari_db\obj\Debug\cok_katmanli_mimari_db.exe.config

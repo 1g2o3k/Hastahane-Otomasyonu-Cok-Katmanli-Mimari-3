@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using cok_katmanli_mimari_db.Models;
+
+namespace cok_katmanli_mimari_db.DAL
+{
+    public class ProductRepository
+    {
+        private readonly string _connString;
+
+        public ProductRepository()
+        {
+            // Use a literal connection string to avoid requiring a System.Configuration reference in the project.
+            _connString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MultiLayerDemo;Integrated Security=True;";
+        }
+
+        public List<Product> GetAll()
+        {
+            var list = new List<Product>();
+            using (var conn = new SqlConnection(_connString))
+            using (var cmd = new SqlCommand("SELECT Id, Name, Price FROM dbo.Products ORDER BY Id", conn))
+            {
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Product
+                        {
+                            Id = reader.GetInt32(0),
+                            Name = reader.GetString(1),
+                            Price = reader.GetDecimal(2)
+                        });
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public int Add(Product p)
+        {
+            const string sql = "INSERT INTO dbo.Products (Name, Price) VALUES (@name, @price); SELECT SCOPE_IDENTITY();";
+            using (var conn = new SqlConnection(_connString))
+            using (var cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@name", p.Name);
+                cmd.Parameters.AddWithValue("@price", p.Price);
+                conn.Open();
+                var id = cmd.ExecuteScalar();
+                return Convert.ToInt32(id);
+            }
+        }
+
+        public void Update(Product p)
+        {
+            const string sql = "UPDATE dbo.Products SET Name = @name, Price = @price WHERE Id = @id";
+            using (var conn = new SqlConnection(_connString))
+            using (var cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@id", p.Id);
+                cmd.Parameters.AddWithValue("@name", p.Name);
+                cmd.Parameters.AddWithValue("@price", p.Price);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Delete(int id)
+        {
+            const string sql = "DELETE FROM dbo.Products WHERE Id = @id";
+            using (var conn = new SqlConnection(_connString))
+            using (var cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+}}
